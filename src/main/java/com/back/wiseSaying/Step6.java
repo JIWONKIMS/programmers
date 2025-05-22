@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Step6 {
     public void method1() {
-        System.out.println("== 명언 앱 ====");
+        System.out.println("== 명언 앱 ==");
         boolean loop = true;
         Scanner scanner = new Scanner(System.in);
         WiseSayings wiseSaying = new WiseSayings();
