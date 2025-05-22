@@ -2,7 +2,7 @@ package com.back.wiseSaying;
 
 import java.util.Scanner;
 
-public class Step1 {
+public class Step2 {
     public void method1() {
         System.out.println("== 명언 앱 ==");
         boolean loop = true;
@@ -15,6 +15,12 @@ public class Step1 {
             switch (input) {
                 case "종료" -> {
                     loop = false;
+                }
+                case "등록" -> {
+                    System.out.print("명언 : ");
+                    String content = scanner.nextLine().trim();
+                    System.out.print("작가 : ");
+                    String author = scanner.nextLine().trim();
                 }
             }
         }
