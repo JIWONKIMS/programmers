@@ -2,6 +2,7 @@ package com.back.wiseSaying;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class WiseSayings {
     long id = 1L;
@@ -22,12 +23,39 @@ public class WiseSayings {
         return id++;
     }
 
+    public void addWiseSaying(long id, String author, String content) {
+        if (author.matches(".*[^a-zA-Z0-9가-힣\\s].*") || content.matches(".*[^a-zA-Z0-9가-힣\\s].*")) {
+            return;
+        }
+
+        String[] wiseSaying = {author, content};
+        wiseSayingMap.put(id, wiseSaying);
+    }
+
     public long deleteWiseSaying(long id) {
         if (wiseSayingMap.containsKey(id)) {
             wiseSayingMap.remove(id);
             return id;
         } else {
             return -1;
+        }
+    }
+
+    public void modifyWiseSaying(long id, Scanner scanner) {
+        if (wiseSayingMap.containsKey(id)) {
+            String[] value = wiseSayingMap.get(id);
+
+            System.out.println("명언(기존) : " + value[1]);
+            System.out.print("명언(수정) : ");
+            String content = scanner.nextLine().trim();
+
+            System.out.println("작가(기존) : " + value[0]);
+            System.out.print("작가(수정) : ");
+            String author = scanner.nextLine().trim();
+
+            addWiseSaying(id, author, content);
+        } else {
+            System.out.println(id + "번 명언이 존재하지 않습니다.");
         }
     }
 
